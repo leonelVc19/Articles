@@ -8,6 +8,21 @@
       <%= f.label :email,"Correo Electronico" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
+     
+     <div class="field">
+      <%= f.label :name,"Nombre" %><br />
+      <%= f.text_field :email%>
+    </div>
+
+     <div class="field">
+      <%= f.label :paternal_surname,"Apellido Paterno" %><br />
+      <%= f.text_field :paternal_surname %>
+    </div>
+
+     <div class="field">
+      <%= f.label :maternal_surname,"Apellido Materno" %><br />
+      <%= f.text_field :maternal_surname%>
+    </div>
 
     <div class="field">
       <%= f.label :password, "Contraseña" %>
