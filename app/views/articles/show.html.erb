@@ -2,13 +2,29 @@
 <h1><%=@article.title%></h1>
 
 <div>
+
     <p>Escrito por: <strong><%= @article.user.email%></strong></p>
+
+    <% if current_user.avatar.attached? %>
+      <%= image_tag url_for(current_user.avatar), height:40 %>
+    <% end %>
 </div>
 
 <div>
 
 <%= @article.content %>
 </div>
+
+<div class="margin-top">
+    <h5 class="label">Tags</h5>
+    <% @article.categories.each do |category| %>
+        <span class="badge badge-pill padding"  style="background-color:<%= category.color %>" >
+            <%= link_to category.title, category, class:"text-white" %>
+        </span>
+    <% end %>
+
+</div>
+
 
 <div>
     <%=link_to "Eliminar el articulo", @article, method: :delete %>

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get "/bienvenida", to: "home#index"
 
+  get "perfil", to: "users#edit"
+  resources :users, only: [:update]
+
 ##ROOT PATH: 
   root to: "home#index"
   resources :categories
