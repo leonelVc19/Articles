@@ -85,6 +85,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise_token_auth (1.2.0)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 6.2)
     erubi (1.10.0)
     ffi (1.15.1-x64-mingw32)
     globalid (0.4.2)
@@ -212,6 +216,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  devise_token_auth
   jbuilder (~> 2.7)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
