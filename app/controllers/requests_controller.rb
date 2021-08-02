@@ -1,7 +1,6 @@
 class RequestsController < ApplicationController
   
   before_action :set_request, except: [:new, :create, :index, :from_author_request]
-
   before_action :authenticate_user!, only: [:new, :create, :edit,:update,:destroy]
 
   # GET /requests or /requests.json
