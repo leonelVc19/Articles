@@ -1,5 +1,8 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: %i[ show edit update destroy ]
+  
+  before_action :set_request, except: [:new, :create, :index, :from_author_request]
+
+  before_action :authenticate_user!, only: [:new, :create, :edit,:update,:destroy]
 
   # GET /requests or /requests.json
   def index
@@ -21,7 +24,9 @@ class RequestsController < ApplicationController
 
   # POST /requests or /requests.json
   def create
-    @request = Request.new(request_params)
+    @request = current_user.requests.new(request_params)
+
+
 
     respond_to do |format|
       if @request.save
@@ -56,6 +61,10 @@ class RequestsController < ApplicationController
     end
   end
 
+  def from_author_request
+    @user = User.find(params[:user_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request
@@ -66,4 +75,7 @@ class RequestsController < ApplicationController
     def request_params
       params.require(:request).permit(:name, :description)
     end
+
+
+
 end

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :requests
-  resources :categories
-  devise_for :users
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get "/bienvenida", to: "home#index"
@@ -12,8 +10,14 @@ Rails.application.routes.draw do
 ##ROOT PATH: 
   root to: "home#index"
   resources :categories
+  resources :requests
+  devise_for :users
+
+  get "requests/user/:user_id", to: "requests#from_author_request"
+
   resources :articles do
     get "user/:user_id", to: "articles#from_author", on: :collection
+    get "requests/:user_id", to: "requests#from_author_request", on: :collection
   end
   #get "articles", to: "articles#index"
   #get "articles/new", to: "articles#new", as: :new_articles
