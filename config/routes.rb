@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :categories
   resources :requests
-  devise_for :users
-
+  devise_for :users, :controllers => { Application: 'Application' }
   get "requests/user/:user_id", to: "requests#from_author_request"
 
   resources :articles do
