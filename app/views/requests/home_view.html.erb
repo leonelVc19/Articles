@@ -1,0 +1,24 @@
+<h1>Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Solicitud realizada por:</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.name %></td>
+        <td><%= request.description %></td>
+        <td><%= request.user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

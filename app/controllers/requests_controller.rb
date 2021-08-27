@@ -1,11 +1,11 @@
 class RequestsController < ApplicationController
   
-  before_action :set_request, except: [:new, :create, :index, :from_author_request]
-  before_action :authenticate_user!, only: [:new, :create, :edit,:update,:destroy]
+  before_action :set_request, except: [:new, :create, :index, :from_author_request, :home_view]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :index, :from_author_request]
 
   # GET /requests or /requests.json
   def index
-    @requests = Request.all
+    @requests = current_user.requests.all
   end
 
   # GET /requests/1 or /requests/1.json
@@ -63,6 +63,12 @@ class RequestsController < ApplicationController
   def from_author_request
     @user = User.find(params[:user_id])
   end
+  
+  # GET /requests/all to everyone 
+  def home_view
+    @requests = Request.all
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
